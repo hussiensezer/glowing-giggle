@@ -78,3 +78,15 @@ Route::post('roles/{role}/destroy', [\App\Http\Controllers\Dashboard\Role\RoleCo
 
 Route::get('users/index', [\App\Http\Controllers\Dashboard\User\UserController::class,'index']);
 Route::post('users/store', [\App\Http\Controllers\Dashboard\User\UserController::class,'store']);
+
+
+
+
+Route::post('categories/product/store', [\App\Http\Controllers\Dashboard\Category\Product\ProductController::class,'store'])->name('product.store');
+
+Route::post('categories/{category}/product/update', [\App\Http\Controllers\Dashboard\Category\Product\ProductController::class,'update'])->name('product.update');
+
+Route::get('categories/product/data',[\App\Http\Controllers\Dashboard\Category\Product\ProductCategoryController::class,'data']);
+Route::get('categories/product/filter',[\App\Http\Controllers\Dashboard\Category\Product\ProductCategoryController::class,'filter']);
+Route::get('categories/product/categories',[\App\Http\Controllers\Dashboard\Category\Product\ProductCategoryController::class,'categories']);
+Route::get('categories/product/category/{category}/sub-categories',[\App\Http\Controllers\Dashboard\Category\Product\ProductCategoryController::class,'subCategories']);

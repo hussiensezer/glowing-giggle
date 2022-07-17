@@ -69,6 +69,69 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'l
 
         });// End Prefix Categories
 
+        /*
+         * Items Routes
+        */
+        Route::get('items/data', [\App\Http\Controllers\Dashboard\Item\ItemController::class, 'data'])->name('items.data');
+        Route::resource('items', \App\Http\Controllers\Dashboard\Item\ItemController::class)->names([
+            'index'     => 'dashboard.items.index',
+            'show'      => 'dashboard.items.show',
+            'create'    => 'dashboard.items.create',
+            'store'     => 'dashboard.items.store',
+            'edit'      => 'dashboard.items.edit',
+            'update'    => 'dashboard.items.update',
+        ]);
+
+        /*
+         * Products Routes
+        */
+        Route::get('products/data', [\App\Http\Controllers\Dashboard\Product\ProductController::class, 'data'])->name('products.data');
+        Route::resource('products', \App\Http\Controllers\Dashboard\Product\ProductController::class)->names([
+            'index'     => 'dashboard.products.index',
+            'show'      => 'dashboard.products.show',
+            'create'    => 'dashboard.products.create',
+            'store'     => 'dashboard.products.store',
+            'edit'      => 'dashboard.products.edit',
+            'update'    => 'dashboard.products.update',
+        ]);
+
+        /*
+         * Inventory Transaction Routes
+        */
+        Route::get('inventory/transaction/index',
+            [\App\Http\Controllers\Dashboard\Inventory\InventoryTransactionController::class, 'index'])
+            ->name('inventory.transaction.index');
+
+        Route::get('inventory/transaction/data',
+            [\App\Http\Controllers\Dashboard\Inventory\InventoryTransactionController::class, 'data'])
+            ->name('inventory.transaction.data');
+
+        Route::post('inventory/transaction/items/{item}/withdrew',
+            [\App\Http\Controllers\Dashboard\Inventory\InventoryTransactionController::class,'itemWithdraw'])
+            ->name('inventory.transaction.items.withdrew');
+
+        Route::post('inventory/transaction/items/{item}/deposit',
+            [\App\Http\Controllers\Dashboard\Inventory\InventoryTransactionController::class,'itemDeposit'])
+            ->name('inventory.transaction.items.deposit');
+
+        Route::post('inventory/transaction/products/{product}/withdrew',
+            [\App\Http\Controllers\Dashboard\Inventory\InventoryTransactionController::class,'productWithdraw'])
+            ->name('inventory.transaction.products.withdrew');
+
+        Route::post('inventory/transaction/products/{product}/deposit',
+            [\App\Http\Controllers\Dashboard\Inventory\InventoryTransactionController::class,'productDeposit'])
+            ->name('inventory.transaction.products.deposit');
+
+        /*
+         * Inventory Setting Routes
+        */
+        Route::get('inventory/setting/index',
+            [\App\Http\Controllers\Dashboard\Inventory\InventorySettingController::class,'index'])
+            ->name('inventory.setting.index');
+
+        Route::put('inventory/setting/update',
+            [\App\Http\Controllers\Dashboard\Inventory\InventorySettingController::class,'update'])
+            ->name('inventory.setting.update');
 
 
     });// End Prefix Dashboard

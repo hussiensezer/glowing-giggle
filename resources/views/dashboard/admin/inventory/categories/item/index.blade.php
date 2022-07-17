@@ -38,6 +38,7 @@
 
 {{--Main Content Here--}}
 @section('content')
+
     <div class="container">
         <div class="row align-items-center mb-4 position-relative">
             <div class="col-4 ms-auto d-flex justify-content-end pe-0 position-absolute add-category-btn">
@@ -227,24 +228,9 @@
                                 </div>
                             </div>
                         </div>
-                        <table id="categories" class="table table-striped table-bordered items-categories">
-                            <thead>
-                            <tr>
-                                <th>رقم</th>
-                                <th>اسم</th>
-                                <th>تاريخ<br>الإنشاء</th>
-                                <th>الوصف</th>
-                                <th>المستوى</th>
-                                <th>عدد<br>المجموعات<br>الداخلية</th>
-                                <th>الحالة</th>
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-
-                            </tbody>
-                        </table>
-                    </div>
+                        <div id="app">
+                            <front-page></front-page>
+                        </div>
                 </div>
             </div>
         </div>
