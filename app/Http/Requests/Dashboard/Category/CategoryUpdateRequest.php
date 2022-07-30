@@ -38,6 +38,8 @@ class CategoryUpdateRequest extends FormRequest
             'parent_id' => ['sometimes', 'nullable', Rule::exists('categories', 'id')
                 ->where('category_type', $this->category_type )
            ],
+        'image'         => ['sometimes','nullable', 'mimes:' . config('setting.image.allow_extensions'),'max:' . config('setting.image.size')],
+
         ];
         foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties) {
             $rules += [

@@ -31,7 +31,7 @@ class CategoryStoreRequest extends FormRequest
             'status'        => ['required', 'boolean'],
             'slug'          => ['required',Rule::unique('categories', 'slug')->where('category_type', $this->category_type)],
             'parent_id'     => ['sometimes','nullable' ,Rule::exists('categories', 'id')->where('category_type', $this->category_type)],
-            'image'         => ['required', 'image', 'mimes:' . config('setting.image.allow_extensions'),'max:' . config('setting.image.size')],
+            'image'         => ['required', 'mimes:' . config('setting.image.allow_extensions'),'max:' . config('setting.image.size')],
         ];
         foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties) {
            $rules += [
